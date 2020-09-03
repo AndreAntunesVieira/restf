@@ -8,7 +8,10 @@ import fileupload from 'express-fileupload'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 import hpp from 'hpp'
-import _cors from './_cors'
+import _cors from './private/_cors'
+
+declare var __dirname: any
+declare var process: any
 
 if (fs.existsSync('./.env')) dotenv.config({ path: './.env' })
 if (fs.existsSync('./config/config.env')) dotenv.config({ path: './config/config.env' })
@@ -110,8 +113,3 @@ export default class RestfServer {
     })
   }
 }
-
-//TODO criar classe para isso?
-
-declare var __dirname: any
-declare var process: any

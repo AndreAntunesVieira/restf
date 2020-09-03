@@ -1,7 +1,7 @@
 import { Router as ExpressRouter } from 'express'
-import _routeDocsRender, { RouteReport } from './_routeDocsRender'
-import _routeController from './_routeController'
-import { addMiddleware } from './_helpers'
+import _routeDocsRender, { RouteReport } from './private/_routeDocsRender'
+import _routeController from './private/_routeController'
+import { addMiddleware } from './private/_helpers'
 import RestfController from './controller'
 
 type MethodAlias = (path: string, controllerMethod: string) => any

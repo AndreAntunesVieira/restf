@@ -1,4 +1,4 @@
-import _database from './_database'
+import _database from './private/_database'
 
 export default class RestfModel {
   db: any

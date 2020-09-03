@@ -39,10 +39,7 @@ function devCommand() {
 
 function startCommand() {
   let allControllers = fs.readFileSync(`${projectPath}/node_modules/restf/.allControllers.js`, 'utf8')
-  const path = allControllers
-    .replace(/\n/g, 'å')
-    .replace(/å.*/g, '')
-    .replace(/\/\/ (.+)/, '$1')
+  const path = fs.readFileSync(`${projectPath}/node_modules/restf/.repoPath`, 'utf8')
   const destiny = `${projectPath}/dist`
   allControllers = allControllers
     .replace(new RegExp(`${path}/(src|dist)`, 'g'), destiny)
@@ -69,6 +66,7 @@ function declareControllers(folderPath = 'src', repoPath = projectPath) {
     .map(controller => `  ${controller}: require('${repoPath}/${folderPath}/controllers/${controller}').default,`)
     .join('\n')
   content += '\n}'
+  fs.writeFileSync(`${projectPath}/node_modules/restf/.repoPath`, repoPath)
   fs.writeFileSync(`${projectPath}/node_modules/restf/.allControllers.js`, content)
 }
 function declareModels(folderPath = 'src') {
